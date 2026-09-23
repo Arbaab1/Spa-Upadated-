@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APC — Luxury Spa &amp; Ladies Salon</title>
+<meta name="description" content="APC Luxury Spa & Ladies Salon — premium facials, hair spa, massages & beauty rituals in Darbhanga. Book your appointment on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Ultra Luxury Pearl, Soft Rose & Warm Gold Palette */
+  --bg-main: #FAF8F5;
+  --bg-card: #FFFFFF;
+  --bg-soft: #F5EBEA;
+  
+  --gold-main: #D4AF37;
+  --gold-dark: #AA820A;
+  --pink-soft: #F9ECEC;
+  --pink-dark: #C27D8E;
+  
+  --text-primary: #1A1818;
+  --text-muted: #665E5E;
+  --line-color: rgba(212, 175, 55, 0.25);
+  
+  /* Appointment Red/Rose Theme */
+  --red-light: #FFF8F8;
+  --red-accent: #D9534F;
+  --red-dark: #A93226;
+  --red-border: rgba(217, 83, 79, 0.25);
+}
+
+/* Base Reset & Layout Constraints */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Jost', sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, .serif {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* PRELOADER */
+#pre {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-main);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+#pre.hide { opacity: 0; visibility: hidden; }
+#pre .mono {
+  width: 80px;
+  height: 80px;
+  border: 1.5px solid var(--gold-main);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  color: var(--gold-main);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.2); }
+  50% { box-shadow: 0 0 0 16px rgba(212, 175, 55, 0); }
+}
+
+/* TOP STRIP */
+.tstrip {
+  background: #1A1818;
+  color: #D4AF37;
+  font-size: 12.5px;
+  padding: 8px 0;
+  letter-spacing: 1px;
+}
+.tstrip .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.tstrip a { color: #FFF; font-weight: 500; }
+
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 300;
+  background: rgba(250, 248, 245, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line-color);
+}
+.hbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 85px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+.logo .mono {
+  width: 46px;
+  height: 46px;
+  border: 1.5px solid var(--gold-main);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: var(--gold-main);
+  background: #FFF;
+}
+.logo b {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: var(--text-primary);
+  line-height: 1;
+  display: block;
+}
+.logo small {
+  color: var(--pink-dark);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+nav.desk { display: flex; gap: 32px; align-items: center; }
+nav.desk a {
+  color: var(--text-primary);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+nav.desk a:hover, nav.desk a.active { color: var(--pink-dark); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2D2727, #1A1818);
+  color: var(--gold-main);
+  font-weight: 500;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: 0.3s;
+  border: 1px solid var(--gold-main);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.btn:hover {
+  background: var(--gold-main);
+  color: #1A1818;
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+.btn.ghost {
+  background: transparent;
+  border: 1.5px solid var(--pink-dark);
+  color: var(--pink-dark);
+  box-shadow: none;
+}
+.btn.ghost:hover {
+  background: var(--pink-dark);
+  color: #fff;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.burger span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+}
+
+.mnav {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-main);
+  z-index: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+}
+.mnav.open { transform: translateY(0); }
+.mnav a {
+  color: var(--text-primary);
+  font-size: 24px;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 2px;
+}
+.mnav .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.page { display: none; }
+.page.show { display: block; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* HERO SECTION */
+.hero {
+  padding: 80px 0;
+  background: radial-gradient(circle at 90% 10%, #F5EBEA 0%, transparent 50%), var(--bg-main);
+  position: relative;
+}
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
+  align-items: center;
+}
+.kick {
+  color: var(--gold-dark);
+  letter-spacing: 4px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.kick::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: var(--gold-dark);
+}
+.hero h1 {
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1.1;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--pink-dark);
+  font-weight: 400;
+}
+.hero p {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 35px;
+  max-width: 480px;
+}
+.hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.hero-img-box {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border: 1px solid var(--line-color);
+}
+.hero-img-box img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+/* MARQUEE */
+.mq {
+  background: #1A1818;
+  color: var(--gold-main);
+  padding: 14px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.mq .track { display: inline-flex; animation: scroll 25s linear infinite; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+.mq span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  padding: 0 30px;
+  letter-spacing: 2px;
+}
+
+/* SECTIONS */
+section { padding: 90px 0; }
+.shead { text-align: center; max-width: 600px; margin: 0 auto 60px; }
+.shead .kick { justify-content: center; }
+.shead h2 { font-size: clamp(32px, 4vw, 48px); color: var(--text-primary); margin-top: 8px; }
+
+/* SERVICES CARDS WITH IMAGES */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+.scard {
+  background: var(--bg-card);
+  border: 1px solid var(--line-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+}
+.scard:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-main);
+  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+}
+.scard-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.scard-body { padding: 24px; }
+.scard-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.scard h3 { font-size: 22px; font-weight: 600; color: var(--text-primary); }
+.scard .p { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--gold-dark); }
+.scard p { color: var(--text-muted); font-size: 13.5px; line-height: 1.5; }
+
+/* ABOUT SECTION */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.about-img img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--line-color);
+}
+
+/* APPOINTMENT PAGE (WHITE + LIGHT RED ACCENT) */
+#pg-appointment {
+  background: var(--red-light);
+  min-height: 80vh;
+}
+.ap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+.ap-side .blk {
+  background: #ffffff;
+  border: 1px solid var(--red-border);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(217, 83, 79, 0.05);
+}
+.ap-side h3 { color: var(--red-dark); font-size: 28px; margin-bottom: 20px; }
+.ap-row { display: flex; gap: 14px; margin-bottom: 20px; font-size: 14.5px; }
+.ap-row i { color: var(--red-accent); font-style: normal; font-size: 18px; }
+.ap-row b { display: block; color: var(--text-primary); }
+.ap-row span { color: var(--text-muted); }
+
+.bform {
+  background: #ffffff;
+  border: 1px solid var(--red-border);
+  border-radius: 12px;
+  padding: 36px;
+  box-shadow: 0 12px 35px rgba(217, 83, 79, 0.08);
+}
+.bform h3 { font-size: 32px; color: var(--red-dark); margin-bottom: 6px; }
+.bform > p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fg { margin-bottom: 18px; }
+.fg label { display: block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; font-weight: 600; }
+.fg input, .fg select, .fg textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #F0C2C2;
+  border-radius: 6px;
+  background: #fff;
+  font-family: 'Jost', sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: 0.3s;
+}
+.fg input:focus, .fg select:focus, .fg textarea:focus {
+  border-color: var(--red-accent);
+  box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.15);
+}
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.chip {
+  padding: 6px 14px;
+  border: 1px solid var(--red-border);
+  border-radius: 50px;
+  font-size: 12.5px;
+  cursor: pointer;
+  transition: 0.25s;
+  color: var(--text-muted);
+  user-select: none;
+  background: #fff;
+}
+.chip.on { background: var(--red-accent); color: #fff; border-color: var(--red-accent); }
+
+.btn-red {
+  background: linear-gradient(135deg, var(--red-accent), var(--red-dark));
+  color: #fff;
+  width: 100%;
+  padding: 15px;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(169, 50, 38, 0.25);
+}
+.btn-red:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(169, 50, 38, 0.35); }
+
+/* FOOTER */
+footer {
+  background: #1A1818;
+  border-top: 1px solid var(--line-color);
+  padding: 70px 0 25px;
+  color: #A39B9B;
+  font-size: 14px;
+}
+.f-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  margin-bottom: 50px;
+}
+.f-grid h4 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold-main); margin-bottom: 18px; }
+.f-grid ul { list-style: none; }
+.f-grid ul li { margin-bottom: 10px; }
+.f-grid ul a { cursor: pointer; transition: 0.2s; }
+.f-grid ul a:hover { color: var(--gold-main); }
+.f-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 25px; font-size: 13px; color: #777; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero .wrap, .ap-grid, .about-grid { grid-template-columns: 1fr; }
+  nav.desk { display: none; }
+  .burger { display: flex; }
+  .hero-img-box img { height: 350px; }
+}
+@media (max-width: 600px) {
+  .frow { grid-template-columns: 1fr; }
+  .bform { padding: 20px; }
+  section { padding: 60px 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="pre"><div class="mono">A</div><small style="letter-spacing: 2px; color: var(--gold-main);">APC LUXURY SPA</small></div>
+
+<!-- MOBILE NAV -->
+<div class="mnav" id="mnav">
+  <button class="close" onclick="toggleMenu()">✕</button>
+  <a onclick="go('home')">Home</a>
+  <a onclick="go('about')">About</a>
+  <a onclick="go('services')">Services</a>
+  <a onclick="go('appointment')">Book Appointment</a>
+  <a onclick="go('contact')">Contact</a>
+</div>
+
+<!-- TOP STRIP -->
+<div class="tstrip">
+  <div class="wrap">
+    <div>✆ <a href="tel:+919818082060">+91 98180 82060</a></div>
+    <div>✦ Open All Days · 10:00 AM – 8:00 PM</div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap hbar">
+    <div class="logo" onclick="go('home')">
+      <div class="mono">A</div>
+      <div><b>APC</b><small>Luxury Spa &amp; Salon</small></div>
+    </div>
+    <nav class="desk">
+      <a onclick="go('home')" data-pg="home" class="active">Home</a>
+      <a onclick="go('about')" data-pg="about">About</a>
+      <a onclick="go('services')" data-pg="services">Services</a>
+      <a onclick="go('contact')" data-pg="contact">Contact</a>
+    </nav>
+    <button class="btn" onclick="go('appointment')">Book Appointment</button>
+    <button class="burger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HOME PAGE ============ -->
+<div class="page show" id="pg-home">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <div class="kick">Luxury Spa &amp; Ladies Salon</div>
+        <h1>Rejuvenate Your <em>Mind &amp; Body</em></h1>
+        <p>Indulge in Darbhanga’s premier beauty sanctuary. Tailored facials, revitalizing hair treatments, and holistic wellness care.</p>
+        <div class="hero-cta">
+          <button class="btn" onclick="go('appointment')">Book Appointment</button>
+          <button class="btn ghost" onclick="go('services')">Explore Menu</button>
+        </div>
+      </div>
+      <div class="hero-img-box">
+        <!-- IMAGE PLACEHOLDER 1: hero-spa-bg.jpg -->
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="APC Luxury Spa Atmosphere">
+      </div>
+    </div>
+  </div>
+
+  <div class="mq"><div class="track" id="mqTrack"></div></div>
+
+  <section>
+    <div class="wrap">
+      <div class="shead">
+        <div class="kick">Our Menu</div>
+        <h2>Curated Beauty Rituals</h2>
+      </div>
+      <div class="svc-grid" id="homeSvcGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SERVICES PAGE ============ -->
+<div class="page" id="pg-services">
+  <section>
+    <div class="wrap">
+      <div class="shead">
+        <div class="kick">Full Service List</div>
+        <h2>Complete Spa &amp; Salon Care</h2>
+      </div>
+      <div class="svc-grid" id="fullSvcGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ABOUT PAGE ============ -->
+<div class="page" id="pg-about">
+  <section>
+    <div class="wrap about-grid">
+      <div class="about-img">
+        <!-- IMAGE PLACEHOLDER 2: salon-interior.jpg -->
+        <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?auto=format&fit=crop&w=800&q=80" alt="APC Salon Interior">
+      </div>
+      <div>
+        <div class="kick">About APC</div>
+        <h2>Unmatched Elegance &amp; Care</h2>
+        <p style="margin-top:20px; color: var(--text-muted);">APC Luxury Spa &amp; Ladies Salon offers an exclusive, high-end sanctuary designed for modern women seeking superior beauty services and genuine relaxation in Darbhanga.</p>
+        <p style="margin-top:15px; color: var(--text-muted);">Our certified specialists use premium, dermatologist-approved skincare lines to deliver noticeable radiance and complete peace of mind.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ APPOINTMENT PAGE (WHITE + LIGHT RED) ============ -->
+<div class="page" id="pg-appointment">
+  <section>
+    <div class="wrap ap-grid">
+      <div class="ap-side">
+        <div class="blk">
+          <h3>Visit APC Salon</h3>
+          <div class="ap-row"><i>✆</i><div><b>Phone / WhatsApp</b><span>+91 98180 82060</span></div></div>
+          <div class="ap-row"><i>◷</i><div><b>Working Hours</b><span>Open All Days · 10:00 AM – 8:00 PM</span></div></div>
+          <div class="ap-row"><i>⌖</i><div><b>Address</b><span>APC Spa &amp; Salon, Darbhanga, Bihar</span></div></div>
+        </div>
+      </div>
+      <div class="bform">
+        <h3>Book Appointment</h3>
+        <p>Choose your service and time slot to confirm your booking on WhatsApp.</p>
+        <div class="frow">
+          <div class="fg"><label>Your Name</label><input type="text" id="apName" placeholder="Enter full name"></div>
+          <div class="fg"><label>Phone Number</label><input type="tel" id="apPhone" placeholder="Mobile number"></div>
+        </div>
+        <div class="fg"><label>Select Service</label>
+          <div class="chips" id="svChips"></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Preferred Date</label><input type="date" id="apDate"></div>
+          <div class="fg"><label>Preferred Time</label>
+            <select id="apTime">
+              <option>10:00 AM</option><option>12:00 PM</option><option>02:00 PM</option>
+              <option>04:00 PM</option><option>06:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Additional Message</label><textarea id="apNote" rows="2" placeholder="Any special requests..."></textarea></div>
+        <button class="btn-red" onclick="sendAppt()">💬 Confirm via WhatsApp</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CONTACT PAGE ============ -->
+<div class="page" id="pg-contact">
+  <section>
+    <div class="wrap">
+      <div class="shead">
+        <div class="kick">Contact Us</div>
+        <h2>We are Happy to Help</h2>
+        <p style="margin-top:15px;">Call or WhatsApp us directly at <b>+91 98180 82060</b></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap f-grid">
+    <div>
+      <h4>APC Luxury Spa</h4>
+      <p>Darbhanga's premier ladies salon &amp; spa dedicated to beauty, relaxation, and self-care.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a onclick="go('home')">Home</a></li>
+        <li><a onclick="go('about')">About Us</a></li>
+        <li><a onclick="go('services')">Services Menu</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Location</h4>
+      <p>+91 98180 82060<br>Darbhanga, Bihar</p>
+    </div>
+  </div>
+  <div class="f-bottom">© 2026 APC Luxury Spa &amp; Ladies Salon. All Rights Reserved.</div>
+</footer>
+
+<script>
+const SPA = { whatsapp: "919818082060" };
+
+/* 9 Curated Services with Image Placeholders & Pricing */
+const SERVICES = [
+  { name: "Hydra-Glow Facial", desc: "Deep hydration treatment for instant glowing skin", price: "₹1,499", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" }, // hydra-facial.jpg
+  { name: "24K Gold Radiance Facial", desc: "Luxury skin revitalizing ritual", price: "₹2,299", img: "https://images.unsplash.com/photo-1512290900673-2061266a1a1c?auto=format&fit=crop&w=600&q=80" }, // gold-facial.jpg
+  { name: "Keratin Hair Treatment", desc: "Frizz-free silk smooth hair restoration", price: "₹3,999", img: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" }, // keratin.jpg
+  { name: "Nourishing Hair Spa", desc: "Deep scalp conditioning & repair therapy", price: "₹999", img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" }, // hair-spa.jpg
+  { name: "Aroma Therapy Massage", desc: "Full body stress relief oil therapy", price: "₹1,899", img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80" }, // aroma-massage.jpg
+  { name: "Spa Pedicure & Manicure", desc: "Exfoliating foot and hand spa care", price: "₹1,199", img: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=600&q=80" }, // pedicure.jpg
+  { name: "Rica Liposoluble Waxing", desc: "Gentle full body smooth hair removal", price: "₹1,299", img: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=600&q=80" }, // body-waxing.jpg
+  { name: "Bridal Makeup Ritual", desc: "Complete high-definition bridal styling", price: "₹8,499", img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" }, // bridal-makeup.jpg
+  { name: "Threading & Facial De-Tan", desc: "Precision shaping and skin tone correction", price: "₹499", img: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=600&q=80" } // threading.jpg
+];
+
+/* Render Services Cards */
+function renderServices() {
+  const html = SERVICES.map(s => `
+    <div class="scard">
+      <img src="${s.img}" alt="${s.name}" class="scard-img">
+      <div class="scard-body">
+        <div class="scard-top">
+          <h3>${s.name}</h3>
+          <span class="p">${s.price}</span>
+        </div>
+        <p>${s.desc}</p>
+      </div>
+    </div>
+  `).join('');
+  
+  document.getElementById('homeSvcGrid').innerHTML = html;
+  document.getElementById('fullSvcGrid').innerHTML = html;
+}
+
+/* Service Chips for Appointment */
+let selectedSvc = SERVICES[0].name;
+function renderChips() {
+  document.getElementById('svChips').innerHTML = SERVICES.map((s, i) => `
+    <span class="chip ${i === 0 ? 'on' : ''}" onclick="selectChip(this, '${s.name}')">${s.name}</span>
+  `).join('');
+}
+
+function selectChip(el, name) {
+  selectedSvc = name;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
+  el.classList.add('on');
+}
+
+/* Marquee Text */
+const MQ_ITEMS = ["Luxury Facials", "Keratin Care", "Aroma Therapy", "Bridal Makeup", "Spa Pedicure"];
+document.getElementById('mqTrack').innerHTML = [...MQ_ITEMS, ...MQ_ITEMS].map(i => `<span>${i}</span> ✦ `).join('');
+
+/* Router */
+function go(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('show'));
+  const target = document.getElementById('pg-' + pageId);
+  if (target) target.classList.add('show');
+  
+  document.querySelectorAll('nav.desk a').forEach(a => {
+    a.classList.toggle('active', a.dataset.pg === pageId);
+  });
+  
+  document.getElementById('mnav').classList.remove('open');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMenu() {
+  document.getElementById('mnav').classList.toggle('open');
+}
+
+/* WhatsApp Redirection */
+function sendAppt() {
+  const name = document.getElementById('apName').value || "Guest";
+  const phone = document.getElementById('apPhone').value || "Not provided";
+  const date = document.getElementById('apDate').value || "Flexible";
+  const time = document.getElementById('apTime').value;
+  const note = document.getElementById('apNote').value || "None";
+
+  const msg = `✨ *Appointment Booking - APC Spa*\n\n` +
+              `👤 *Name:* ${name}\n` +
+              `📞 *Phone:* ${phone}\n` +
+              `💆 *Service:* ${selectedSvc}\n` +
+              `📅 *Date:* ${date}\n` +
+              `⏰ *Time:* ${time}\n` +
+              `📝 *Note:* ${note}\n\n` +
+              `Please confirm availability. Thank you!`;
+
+  window.open(`https://wa.me/${SPA.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+/* Init */
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('pre').classList.add('hide'), 600);
+  renderServices();
+  renderChips();
+  document.getElementById('apDate').min = new Date().toISOString().split('T')[0];
+});
+</script>
+</body>
+</html>
