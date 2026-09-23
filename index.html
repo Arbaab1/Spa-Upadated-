@@ -692,10 +692,9 @@ const SPA = { whatsapp: "919818082060" };
 /* 9 Curated Services with Image Placeholders & Pricing */
 const SERVICES = [
   { name: "Hydra-Glow Facial", desc: "Deep hydration treatment for instant glowing skin", price: "₹1,499", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80" }, // hydra-facial.jpg
-  { name: "24K Gold Radiance Facial", desc: "Luxury skin revitalizing ritual", price: "₹2,299", img: "https://images.unsplash.com/photo-1512290900673-2061266a1a1c?auto=format&fit=crop&w=600&q=80" }, // gold-facial.jpg
+{ name: "24K Gold Radiance Facial", desc: "Luxury skin revitalizing ritual", price: "₹2,299", img: "gold-facial.jpg" },
   { name: "Keratin Hair Treatment", desc: "Frizz-free silk smooth hair restoration", price: "₹3,999", img: "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" }, // keratin.jpg
   { name: "Nourishing Hair Spa", desc: "Deep scalp conditioning & repair therapy", price: "₹999", img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" }, // hair-spa.jpg
-  { name: "Aroma Therapy Massage", desc: "Full body stress relief oil therapy", price: "₹1,899", img: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80" }, // aroma-massage.jpg
   { name: "Spa Pedicure & Manicure", desc: "Exfoliating foot and hand spa care", price: "₹1,199", img: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&w=600&q=80" }, // pedicure.jpg
   { name: "Rica Liposoluble Waxing", desc: "Gentle full body smooth hair removal", price: "₹1,299", img: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=600&q=80" }, // body-waxing.jpg
   { name: "Bridal Makeup Ritual", desc: "Complete high-definition bridal styling", price: "₹8,499", img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80" }, // bridal-makeup.jpg
@@ -736,7 +735,7 @@ function selectChip(el, name) {
 }
 
 /* Marquee Text */
-const MQ_ITEMS = ["Luxury Facials", "Keratin Care", "Aroma Therapy", "Bridal Makeup", "Spa Pedicure"];
+const MQ_ITEMS = ["Luxury Facials", "Keratin Care", "Bridal Makeup", "Spa Pedicure"];
 document.getElementById('mqTrack').innerHTML = [...MQ_ITEMS, ...MQ_ITEMS].map(i => `<span>${i}</span> ✦ `).join('');
 
 /* Router */
